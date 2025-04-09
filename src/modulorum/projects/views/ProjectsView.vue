@@ -29,14 +29,17 @@ import FabButton from '@/modulorum/commune/components/FabButton.vue';
     </tbody>
   </table>
 
-<FabButton positione="top-left" />
+<FabButton @click="() => console.log('clicked')">
+
+  <addCircle />
+
+</FabButton>
 
 </div>
 
 </template>
 
-<script lang="ts" setup>
-import FabButton from '../components/SandiaButton.vue';
 
+<script lang="ts" setup>
 
 </script>
