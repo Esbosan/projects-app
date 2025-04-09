@@ -23,7 +23,7 @@
   </dialog>
 
   <div
-  v-if="aperta === true"
+  v-if="aperta"
   class="fixed top-0 w-screen h-screen z-10 bg-black opacity-40">
   </div>
 </template>
