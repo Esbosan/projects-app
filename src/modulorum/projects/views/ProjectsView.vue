@@ -28,7 +28,7 @@ import FabButton from '@/modulorum/commune/components/FabButton.vue';
 
     </tbody>
   </table>
-
+<InputModal />
 <FabButton @click="() => console.log('clicked')">
 
   <addCircle />
