@@ -1,7 +1,6 @@
 <template>
   <button @click="$emit('click')" :class="['btn btn-circle btn-secondary fixed', positione]">
 
-
     <slot />
   </button>
 </template>
