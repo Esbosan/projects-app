@@ -65,12 +65,18 @@
 import FabButton from '@/modulorum/commune/components/FabButton.vue';
 import InputModal from '@/modulorum/commune/components/InputModal.vue';
 import PropriumModal from '@/modulorum/commune/components/PropriumModal.vue';
-import AddCircle from '@/modulorum/commune/icons/addCircle.vue';
+import AddCircle from '@/modulorum/commune/icons/AddCircle.vue';
 import ModalIcon from '@/modulorum/commune/icons/ModalIcon.vue';
 import { ref } from 'vue';
+import { useProjectsStore } from '../stores/projects.store';
 
 const modalAperta = ref(false);
 const propriumModalAperta = ref(false);
 
-const cumNovusValorem = (projectNomen: string) => {};
+const projectStore = useProjectsStore();
+
+const cumNovusValorem = (projectNomen: string) => {
+  console.log(projectNomen)
+};
+
 </script>
