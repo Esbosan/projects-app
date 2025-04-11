@@ -12,11 +12,17 @@
       </thead>
       <tbody>
         <!-- row 2 -->
-        <tr class="hover:bg-base-300">
-          <th>1</th>
-          <td>Hart Hagerty</td>
-          <td>Desktop Support Technician</td>
-          <td>Purple</td>
+        <tr
+          v-for="(project, index) in projectStore.projectList"
+          :key="project.id"
+          class="hover:bg-base-300"
+        >
+          <th>{{ index + 1 }}</th>
+          <td>{{ project.nomen }}</td>
+          <td>{{ project.chores.length }}</td>
+          <progress class="progress progress-warning w-56" value="10" max="100"></progress>
+
+
         </tr>
       </tbody>
     </table>
@@ -24,7 +30,7 @@
     <InputModal
       :aperta="modalAperta"
       @claudere="modalAperta = false"
-      @valorem="cumNovusValorem"
+      @valorem="projectStore.addereProject"
       placeholder="Introduce el nombre del proyecto ..."
       titulus="Nuevo proyecto"
       subtitulus="Pon nombre a tu nuevo proyecto."
@@ -45,17 +51,17 @@
 
       <template #footer>
         <div class="flex justify-end">
-          <button @click="propriumModalAperta=false" class="btn">close</button>
-          <button @click="propriumModalAperta=false" class="btn btn-primary ml-4">Aceptar</button>
+          <button @click="propriumModalAperta = false" class="btn">close</button>
+          <button @click="propriumModalAperta = false" class="btn btn-primary ml-4">Aceptar</button>
         </div>
       </template>
     </PropriumModal>
 
-    <FabButton @click="modalAperta = true" positione="bottom-left">
+    <FabButton @click="modalAperta = true" >
       <AddCircle />
     </FabButton>
 
-    <ModalIcon @click="propriumModalAperta = true">
+    <ModalIcon @click="propriumModalAperta = true" positione="bottom-left">
       <AddCircle />
     </ModalIcon>
   </div>
@@ -75,8 +81,5 @@ const propriumModalAperta = ref(false);
 
 const projectStore = useProjectsStore();
 
-const cumNovusValorem = (projectNomen: string) => {
-  console.log(projectNomen)
-};
 
 </script>

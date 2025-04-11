@@ -8,7 +8,7 @@
           <input
             ref="inputRef"
             type="text"
-            :placeholder=" placeholder ?? 'inserte un valor'"
+            :placeholder="placeholder ?? 'inserte un valor'"
             class="input input-bordered w-full flex input-primary"
             v-model="inputValorem"
           />
@@ -22,14 +22,11 @@
     </div>
   </dialog>
 
-  <div
-  v-if="aperta"
-  class="fixed top-0 w-screen h-screen z-10 bg-black opacity-40">
-  </div>
+  <div v-if="aperta" class="fixed top-0 w-screen h-screen z-10 bg-black opacity-40"></div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 interface Props {
   aperta: boolean;
@@ -38,7 +35,7 @@ interface Props {
   subtitulus: string;
 }
 
-defineProps<Props>();
+const props = defineProps<Props>();
 
 const emissiones = defineEmits<{
   claudere: [void];
@@ -47,11 +44,20 @@ const emissiones = defineEmits<{
 
 const inputValorem = ref<string>('');
 const inputRef = ref<HTMLInputElement | null>(null);
+
+watch(props, ({ aperta }) => {
+  setTimeout(() => {
+    if (aperta) {
+      inputRef.value?.focus();
+    }
+  }, 300);
+});
+
 const submitValorem = () => {
   console.log({ valorem: inputValorem.value });
 
   if (!inputValorem.value) {
-    inputRef.value?.focus()
+    inputRef.value?.focus();
     return;
   }
 
